@@ -211,8 +211,8 @@ int crypto_stream_speck6496ctr_sse4_xor(
     in+=16; inlen-=16; out+=16;
   }
   if (inlen>=8){
-    Encrypt_Xor(out,in,nonce,rk,key,8);
-    for(i=0;i<8;i++) out[i]^=in[i];
+    Encrypt_Xor(block,in,nonce,rk,key,8);
+    for(i=0;i<8;i++) out[i]=block[i]^in[i];
     in+=8; inlen-=8; out+=8;
   }
   if (inlen>0){ 

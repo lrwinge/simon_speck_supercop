@@ -230,8 +230,8 @@ int crypto_stream_speck128256ctr_avx2_xor(unsigned char *out,
     in+=32; inlen-=32; out+=32;
   }
   if (inlen>=16){
-    Encrypt_Xor(out,in,nonce,rk,key,16);
-    for(i=0;i<16;i++) out[i]^=in[i];
+    Encrypt_Xor(block,in,nonce,rk,key,16);
+    for(i=0;i<16;i++) out[i]=block[i]^in[i];
     in+=16; inlen-=16; out+=16;
   }
   if (inlen>0){ 

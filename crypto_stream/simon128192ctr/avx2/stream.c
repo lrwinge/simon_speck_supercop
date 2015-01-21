@@ -222,9 +222,9 @@ int crypto_stream_simon128192ctr_avx2_xor(
     in+=32; inlen-=32; out+=32;
   }
   if (inlen>=16){
-    Encrypt_Xor(out,in,nonce,rk,key,16);
-    ((u64 *)out)[1]=((u64 *)out)[1]^((u64 *)in)[1];
-    ((u64 *)out)[0]=((u64 *)out)[0]^((u64 *)in)[0];
+    Encrypt_Xor(block,in,nonce,rk,key,16);
+    ((u64 *)out)[1]=((u64 *)block)[1]^((u64 *)in)[1];
+    ((u64 *)out)[0]=((u64 *)block)[0]^((u64 *)in)[0];
     in+=16; inlen-=16; out+=16;
   }
   if (inlen>0){ 
